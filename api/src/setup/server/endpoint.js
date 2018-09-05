@@ -15,12 +15,10 @@ export default function (server) {
 
     if(NODE_ENV === 'development') {
       console.log(request.body)
-
-      console.log(modules)
     }
 
     try {
-      result = await modules[request.body.method](request.body.params)
+      result = await modules[request.body.operation](request.body.params)
     } catch (error) {
       console.error(error.message)
     }

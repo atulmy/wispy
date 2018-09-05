@@ -16,3 +16,19 @@ export async function productList() {
     }
   }
 }
+
+// Get by id
+export async function productById({ productId }) {
+  try {
+    const data = await Product.findById(productId)
+
+    return {
+      success: true,
+      data
+    }
+  } catch (error) {
+    return {
+      success: false
+    }
+  }
+}

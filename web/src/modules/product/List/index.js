@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 
 // UI Imports
-import { Header, Table, Loader, Button } from 'semantic-ui-react'
+import { Header, Table, Loader, Button, Divider } from 'semantic-ui-react'
 
 // App Imports
 import routes from '../routes'
@@ -24,7 +24,7 @@ class List extends PureComponent {
 
     return (
       <div>
-        <Header as={'h3'} style={{ marginBottom: '2em' }}>
+        <Header as={'h3'} style={{ marginBottom: '1.5em' }}>
           Products
 
           <div style={{ float: 'right' }}>
@@ -34,6 +34,8 @@ class List extends PureComponent {
           </div>
         </Header>
 
+        <Divider />
+
         <Table celled>
           <Table.Header>
             <Table.Row>
@@ -41,7 +43,7 @@ class List extends PureComponent {
 
               <Table.HeaderCell>Description</Table.HeaderCell>
 
-              <Table.HeaderCell style={{ textAlign: 'center' }}>Actions</Table.HeaderCell>
+              <Table.HeaderCell style={{ textAlign: 'center', width: 260}}>Actions</Table.HeaderCell>
             </Table.Row>
           </Table.Header>
 
@@ -61,6 +63,10 @@ class List extends PureComponent {
                         <Table.Cell>{ description }</Table.Cell>
 
                         <Table.Cell style={{ textAlign: 'center' }}>
+                          <Link to={routes.productView.path(_id)}>
+                            <Button>View</Button>
+                          </Link>
+
                           <Link to={routes.productEdit.path(_id)}>
                             <Button>Edit</Button>
                           </Link>

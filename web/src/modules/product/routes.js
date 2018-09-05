@@ -1,6 +1,7 @@
 // App Imports
 import List from './List'
 import CreateOrEdit from './CreateOrEdit'
+import View from './View'
 
 // Pages routes
 export default {
@@ -17,5 +18,10 @@ export default {
   productEdit: {
     path: (productId = ':productId') => (`/product/edit/${ productId }`),
     component: CreateOrEdit
+  },
+
+  productView: {
+    path: (productId = ':productId') => (`/product/${ productId }`),
+    component: View
   }
 }

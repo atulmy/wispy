@@ -16,7 +16,7 @@ export function getList(isLoading = true) {
 
     try {
       const { data } = await axios.post(API_URL, {
-        method: 'productList'
+        operation: 'productList'
       })
 
       if(data.success) {
@@ -38,5 +38,17 @@ export function getList(isLoading = true) {
         isLoading: false
       })
     }
+  }
+}
+
+// Get by id
+export function get(productId) {
+  return dispatch => {
+    return axios.post(API_URL, {
+      operation: 'productById',
+      params: {
+        productId
+      }
+    })
   }
 }
