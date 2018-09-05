@@ -1,6 +1,6 @@
 // Imports
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // UI Imports
 import { Menu } from 'semantic-ui-react'
@@ -39,4 +39,4 @@ export const Header = () => (
   </Menu>
 )
 
-export default withRouter(Header)
+export default Header
