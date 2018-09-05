@@ -1,0 +1,9 @@
+{
+  "endpoint": {
+    "url": "/"
+  },
+  "site": {
+    "version": 0.1,
+    "name": "QnM API"
+  }
+}
