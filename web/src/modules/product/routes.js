@@ -4,7 +4,7 @@ import List from './List'
 // Pages routes
 export default {
   productList: {
-    path: '/',
+    path: '/products',
     component: List
   }
 }

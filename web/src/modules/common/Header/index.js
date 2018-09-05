@@ -13,7 +13,13 @@ export const Header = () => (
   <Menu>
     <Link to={routes.home.path}>
       <Menu.Item>
-        Wispy
+        <strong>WISPY</strong>
+      </Menu.Item>
+    </Link>
+
+    <Link to={routes.productList.path}>
+      <Menu.Item>
+        Products
       </Menu.Item>
     </Link>
 

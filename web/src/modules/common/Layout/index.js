@@ -11,7 +11,7 @@ const Layout = (props) => (
     <Header />
 
     {/* Body */}
-    <main>
+    <main style={{ padding: '1em 2em' }}>
       { props.children }
     </main>
   </div>
