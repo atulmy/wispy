@@ -1,48 +1,36 @@
 // Imports
-import React, { PureComponent } from 'react'
+import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 // UI Imports
 import { Menu } from 'semantic-ui-react'
 
 // App Imports
+import routes from '../../../setup/routes'
 
 // Component
-class Header extends PureComponent {
-  constructor (props) {
-    super(props)
+export const Header = () => (
+  <Menu>
+    <Link to={routes.home.path}>
+      <Menu.Item>
+        Wispy
+      </Menu.Item>
+    </Link>
 
-    this.state = {
-      activeItem: ''
-    }
-  }
-
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-
-  render() {
-    const { activeItem } = this.state
-
-    return (
-      <Menu>
-        <Menu.Item name='browse' active={activeItem === 'browse'} onClick={this.handleItemClick}>
-          Browse
+    <Menu.Menu position={'right'}>
+      <Link to={routes.about.path}>
+        <Menu.Item>
+          About
         </Menu.Item>
+      </Link>
 
-        <Menu.Item name='submit' active={activeItem === 'submit'} onClick={this.handleItemClick}>
-          Submit
+      <a href={'https://github.com/atulmy/wispy'} target={'_blank'}>
+        <Menu.Item>
+          GitHub
         </Menu.Item>
+      </a>
+    </Menu.Menu>
+  </Menu>
+)
 
-        <Menu.Menu position='right'>
-          <Menu.Item name='signup' active={activeItem === 'signup'} onClick={this.handleItemClick}>
-            Sign Up
-          </Menu.Item>
-
-          <Menu.Item name='help' active={activeItem === 'help'} onClick={this.handleItemClick}>
-            Help
-          </Menu.Item>
-        </Menu.Menu>
-      </Menu>
-    )
-  }
-}
-
-export default Header
+export default withRouter(Header)
