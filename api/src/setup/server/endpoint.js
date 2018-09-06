@@ -16,7 +16,7 @@ export default function (server) {
     }
 
     try {
-      const { data, message } = await modules[request.body.operation](request.body.params)
+      const { data, message = '' } = await modules[request.body.operation](request.body.params)
       result.success = true
       result.data = data
       result.message = message
@@ -27,7 +27,7 @@ export default function (server) {
     if(NODE_ENV === 'development') {
       console.log(request.body)
 
-      console.log(result)
+      console.log(result.success)
     }
 
     response.send(result)
