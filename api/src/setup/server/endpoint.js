@@ -10,17 +10,24 @@ export default function (server) {
   // API endpoint
   server.all(params.endpoint.url, async (request, response) => {
     let result = {
-      success: false
+      success: false,
+      message: 'Please try again.',
+      data: null
+    }
+
+    try {
+      const { data, message } = await modules[request.body.operation](request.body.params)
+      result.success = true
+      result.data = data
+      result.message = message
+    } catch (error) {
+      result.message = error.message
     }
 
     if(NODE_ENV === 'development') {
       console.log(request.body)
-    }
 
-    try {
-      result = await modules[request.body.operation](request.body.params)
-    } catch (error) {
-      console.error(error.message)
+      console.log(result)
     }
 
     response.send(result)

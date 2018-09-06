@@ -8,6 +8,7 @@ import { Header, Grid, Divider, Button, Form } from 'semantic-ui-react'
 
 // App Imports
 import { messageShow } from '../../common/api/actions'
+import routes from '../api/routes'
 import { get } from '../api/actions/query'
 import { createOrUpdate } from '../api/actions/mutation'
 
@@ -61,7 +62,7 @@ class CreateOrUpdate extends Component {
   onSubmit = async (event) => {
     event.preventDefault()
 
-    const { createOrUpdate, messageShow } = this.props
+    const { createOrUpdate, messageShow, history } = this.props
     const { product } = this.state
 
     this.isLoadingSubmitToggle(true)
@@ -70,16 +71,13 @@ class CreateOrUpdate extends Component {
       const { data } = await createOrUpdate(product)
 
       if(data.success) {
-        this.setState({
-          product: { ...this.product }
-        })
+        history.push(routes.productList.path)
 
-        messageShow({ title: 'Success!', description: 'Product has been saved successfully.' })
+        messageShow({ title: 'Success!', description: data.message })
       } else {
-        messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+        messageShow({ title: 'Error!', description: data.message })
       }
     } catch(error) {
-      console.log(error.message)
       messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
     } finally {
       this.isLoadingSubmitToggle(false)

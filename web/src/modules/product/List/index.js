@@ -26,7 +26,7 @@ class List extends PureComponent {
   }
 
   onDelete = (productId) => async () => {
-    const { remove } = this.props
+    const { remove, messageShow } = this.props
 
     let check = window.confirm('Are you sure you want to delete this product?')
 
@@ -37,9 +37,9 @@ class List extends PureComponent {
         if(data.success) {
           this.refresh(false)
 
-          messageShow({ title: 'Success!', description: 'Product has been deleted successfully.' })
+          messageShow({ title: 'Success!', description: data.message })
         } else {
-          messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+          messageShow({ title: 'Error!', description: data.message })
         }
       } catch(error) {
         messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
