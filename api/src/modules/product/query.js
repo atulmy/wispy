@@ -7,13 +7,10 @@ export async function productList() {
     const data = await Product.find().sort({ createdAt: -1 })
 
     return {
-      success: true,
       data
     }
   } catch (error) {
-    return {
-      success: false
-    }
+    throw new Error('Unable to perform this operation. Please try again.')
   }
 }
 
@@ -23,12 +20,9 @@ export async function productById({ productId }) {
     const data = await Product.findById(productId)
 
     return {
-      success: true,
       data
     }
   } catch (error) {
-    return {
-      success: false
-    }
+    throw new Error('Unable to perform this operation. Please try again.')
   }
 }
