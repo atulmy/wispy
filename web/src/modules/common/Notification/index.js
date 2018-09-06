@@ -12,13 +12,13 @@ import { messageHide } from '../api/actions'
 // Component
 class Notification extends PureComponent {
   render() {
-    const { common: { message }, messageHide } = this.props
+    const { common: { message: { open, success, message } }, messageHide } = this.props
 
     return (
-      message.open &&
+      open &&
       <Message floating onClick={messageHide} style={{ position: 'fixed', bottom: 0, left: 0, margin: '2em' }}>
-        <Message.Header>{ message.title }</Message.Header>
-        <p>{ message.description }</p>
+        <Message.Header>{ success ? '✅ Success' : '❌ Error' }</Message.Header>
+        <p>{ message }</p>
       </Message>
     )
   }

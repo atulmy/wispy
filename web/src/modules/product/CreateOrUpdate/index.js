@@ -72,13 +72,11 @@ class CreateOrUpdate extends Component {
 
       if(data.success) {
         history.push(routes.productList.path)
-
-        messageShow({ title: 'Success!', description: data.message })
-      } else {
-        messageShow({ title: 'Error!', description: data.message })
       }
+
+      messageShow({ success: data.success, message: data.message })
     } catch(error) {
-      messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+      messageShow({ success: false, message: 'There was some error. Please try again.' })
     } finally {
       this.isLoadingSubmitToggle(false)
     }
@@ -127,7 +125,6 @@ class CreateOrUpdate extends Component {
                     value={name}
                     onChange={this.onChange}
                     placeholder={'Enter product name'}
-                    required={true}
                     autoComplete={'off'}
                     autoFocus
                   />

@@ -5,13 +5,13 @@ import params from '../../../setup/config/params'
 export const MESSAGE_SHOW = 'COMMON_MESSAGE_SHOW'
 export const MESSAGE_HIDE = 'COMMON_MESSAGE_HIDE'
 
-export function messageShow({ title, description }, hide = params.message.timers.default) {
+export function messageShow({ success, message }, hide = params.message.timers.default) {
   return dispatch => {
     window.setTimeout(() => {
       dispatch({ type: MESSAGE_HIDE })
     }, hide)
 
-    dispatch({ type: MESSAGE_SHOW, title, description })
+    dispatch({ type: MESSAGE_SHOW, success, message })
   }
 }
 

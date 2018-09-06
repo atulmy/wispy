@@ -36,13 +36,11 @@ class List extends PureComponent {
 
         if(data.success) {
           this.refresh(false)
-
-          messageShow({ title: 'Success!', description: data.message })
-        } else {
-          messageShow({ title: 'Error!', description: data.message })
         }
+
+        messageShow({ success: data.success, message: data.message })
       } catch(error) {
-        messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+        messageShow({ success: false, message: 'There was some error. Please try again.' })
       }
     }
   }
