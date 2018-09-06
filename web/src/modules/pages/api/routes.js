@@ -1,6 +1,6 @@
 // App Imports
-import Home from './Home'
-import About from './About'
+import Home from '../Home'
+import About from '../About'
 
 // Pages routes
 export default {

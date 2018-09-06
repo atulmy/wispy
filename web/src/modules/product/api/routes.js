@@ -1,7 +1,7 @@
 // App Imports
-import List from './List'
-import CreateOrUpdate from './CreateOrUpdate'
-import View from './View'
+import List from '../List'
+import CreateOrUpdate from '../CreateOrUpdate'
+import View from '../View'
 
 // Pages routes
 export default {

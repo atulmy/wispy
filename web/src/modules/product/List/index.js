@@ -8,15 +8,43 @@ import { Link } from 'react-router-dom'
 import { Header, Table, Loader, Button, Divider } from 'semantic-ui-react'
 
 // App Imports
-import routes from '../routes'
+import { messageShow } from '../../common/api/actions'
+import routes from '../api/routes'
 import { getList } from '../api/actions/query'
+import { remove } from '../api/actions/mutation'
 
 // Component
 class List extends PureComponent {
   componentDidMount() {
+    this.refresh()
+  }
+
+  refresh = (isLoading = true) => {
     const { getList } = this.props
 
-    getList()
+    getList(isLoading)
+  }
+
+  onDelete = (productId) => async () => {
+    const { remove } = this.props
+
+    let check = window.confirm('Are you sure you want to delete this product?')
+
+    if(check) {
+      try {
+        const { data } = await remove(productId)
+
+        if(data.success) {
+          this.refresh(false)
+
+          messageShow({ title: 'Success!', description: 'Product has been deleted successfully.' })
+        } else {
+          messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+        }
+      } catch(error) {
+        messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+      }
+    }
   }
 
   render() {
@@ -71,7 +99,7 @@ class List extends PureComponent {
                             <Button>Edit</Button>
                           </Link>
 
-                          <Button>Delete</Button>
+                          <Button onClick={this.onDelete(_id)}>Delete</Button>
                         </Table.Cell>
                       </Table.Row>
                     )
@@ -90,6 +118,8 @@ class List extends PureComponent {
 List.propTypes = {
   products: PropTypes.object.isRequired,
   getList: PropTypes.func.isRequired,
+  remove: PropTypes.func.isRequired,
+  messageShow: PropTypes.func.isRequired,
 }
 
 // Component State
@@ -99,4 +129,4 @@ function listState(state) {
   }
 }
 
-export default connect(listState, { getList })(List)
+export default connect(listState, { getList, remove, messageShow })(List)

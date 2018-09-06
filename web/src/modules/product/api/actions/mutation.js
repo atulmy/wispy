@@ -34,11 +34,13 @@ export function update(product) {
 }
 
 // Remove
-export function remove(data) {
+export function remove(productId) {
   return dispatch => {
     return axios.post(API_URL, {
       operation: 'productRemove',
-      params: data
+      params: {
+        productId
+      }
     })
   }
 }
