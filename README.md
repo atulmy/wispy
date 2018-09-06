@@ -2,7 +2,7 @@
 Lightweight API pattern inspired by GraphQL/SOAP
 
 ## Idea
-An easy pattern to communicate your client with your server, i.e. execute functions or piece of code living in your API end without any hassles of creating multiple endpoints (REST) or managing complex schemas (GraphQL). Server essentially exposes functions or methods which can be called by client with standard JSON payload along with passing any parameters to it. 
+An easy (remote procedure call) pattern to communicate your client with your server, i.e. execute functions or piece of code living in your API end without any hassles of creating multiple endpoints (REST) or managing complex schemas (GraphQL). Server essentially exposes functions or methods which can be called by client with standard JSON payload along with passing any parameters to it. 
 
 ## Comparisons
 - Uses JSON unlike string based GQL in GraphQL or URL in REST
