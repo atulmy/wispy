@@ -10,7 +10,7 @@ const Home = () => (
     <Header as={'h3'}>Welcome!</Header>
 
     <Divider />
-    
+
     <p>Select an item from menu to explore.</p>
   </div>
 )

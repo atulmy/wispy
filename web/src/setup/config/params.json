@@ -2,5 +2,13 @@
   "site": {
     "version": 0.1,
     "name": "QnM Web"
+  },
+
+  "message": {
+    "timers": {
+      "short": 2000,
+      "default": 4000,
+      "long": 6000
+    }
   }
 }

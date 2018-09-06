@@ -3,6 +3,7 @@ import React from 'react'
 
 // App Imports
 import Header from '../Header'
+import Notification from '../Notification'
 
 // Component
 const Layout = (props) => (
@@ -14,6 +15,9 @@ const Layout = (props) => (
     <main style={{ padding: '1em 2em' }}>
       { props.children }
     </main>
+
+    {/* Notification */}
+    <Notification />
   </div>
 )
 

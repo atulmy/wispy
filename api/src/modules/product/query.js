@@ -4,7 +4,7 @@ import Product from './model'
 // Get all
 export async function productList() {
   try {
-    const data = await Product.find()
+    const data = await Product.find().sort({ createdAt: -1 })
 
     return {
       success: true,
