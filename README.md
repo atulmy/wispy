@@ -200,3 +200,36 @@ Result
   }
 }
 ```
+
+
+## Setup and Running
+- Prerequisites
+  - Node
+  - MongoDB
+
+- Clone repo `git clone git@github.com:atulmy/wispy.git wispy`
+
+- Configurations
+  - Create `.env` for API `cd api` and `cp .env.example .env`
+  - Modify `/api/.env` for PORT (optional)
+  - Modify `/web/.env` for PORT / API URL (optional)
+
+- Setup
+  - API: Install packages and database setup `cd api` and `npm run setup`
+  - Web: Install packages `cd web` and `npm install`
+
+- Running
+  - Run API `cd api` and `npm start`, API running at http://localhost:8000/
+  - Run Web `cd web` and `npm start`, browse web app at http://localhost:3000/
+  
+  
+## Authors
+- Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
+
+## Support
+[![Become a Patreon](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/patreon.png?v=1)](https://www.patreon.com/atulmy)
+
+## License
+Copyright (c) 2018 Atul Yadav http://github.com/atulmy
+
+The MIT License (http://www.opensource.org/licenses/mit-license.php)

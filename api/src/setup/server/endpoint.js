@@ -15,13 +15,16 @@ export default function (server) {
       data: null
     }
 
-    try {
-      const { data, message = '' } = await modules[request.body.operation](request.body.params)
-      result.success = true
-      result.data = data
-      result.message = message
-    } catch (error) {
-      result.message = error.message
+    if(request.body.operation) {
+      try {
+        const { data, message = '' } = await modules[request.body.operation](request.body.params)
+
+        result.success = true
+        result.data = data
+        result.message = message
+      } catch (error) {
+        result.message = error.message
+      }
     }
 
     if(NODE_ENV === 'development') {
