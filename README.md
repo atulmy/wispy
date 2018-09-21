@@ -15,7 +15,7 @@ Execute functions or piece of code living in your API end without any hassles of
 
 ## Examples
 
-#### Create
+#### 1. Create
 
 cURL
 ```
@@ -61,7 +61,7 @@ Result
 }
 ```
 
-#### Read
+#### 2.1 Read
 cURL
 ```
 curl http://localhost:8000 \
@@ -116,7 +116,7 @@ Result
 }
 ```
 
-#### Read with fields selection
+#### 2.2 Read with fields selection
 cURL
 ```
 curl http://localhost:8000 \
@@ -142,7 +142,7 @@ Result
 }
 ```
 
-#### Update
+#### 3. Update
 
 cURL
 ```
@@ -185,7 +185,7 @@ Result
 }
 ```
 
-#### Delete
+#### 4. Delete
 
 cURL
 ```
