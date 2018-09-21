@@ -16,7 +16,8 @@ export function getList(isLoading = true) {
 
     try {
       const { data } = await axios.post(API_URL, {
-        operation: 'productList'
+        operation: 'productList',
+        fields: ['_id', 'name', 'description']
       })
 
       if(data.success) {

@@ -2,9 +2,9 @@
 import Product from './model'
 
 // Get all
-export async function productList() {
+export async function productList({ fields }) {
   try {
-    const data = await Product.find().sort({ createdAt: -1 })
+    const data = await Product.find().sort({ createdAt: -1 }).select(fields)
 
     return {
       data
@@ -15,7 +15,7 @@ export async function productList() {
 }
 
 // Get by id
-export async function productById({ productId }) {
+export async function productById({ params: { productId } }) {
   try {
     const data = await Product.findById(productId)
 
