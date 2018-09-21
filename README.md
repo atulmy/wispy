@@ -228,6 +228,7 @@ Result
 - [x] Accept params and fields selection
 - [x] Inject authentication info to operations via middleware
 - [ ] Option to expose operations as REST endpoints
+- [ ] Auto generate documentations
 
 
 ## Authors
