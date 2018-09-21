@@ -1,8 +1,8 @@
 # WISPY 🌱
-Lightweight API pattern inspired by GraphQL/SOAP
+An experimental lightweight (remote procedure call) API pattern [work in progress]
 
 ## Idea
-An easy (remote procedure call) pattern to communicate your client with your server, i.e. execute functions or piece of code living in your API end without any hassles of creating multiple endpoints (REST) or managing complex schemas (GraphQL). Server essentially exposes functions or methods which can be called by client with standard JSON payload along with passing any parameters to it. 
+Execute functions or piece of code living in your API end without any hassles of creating multiple endpoints (REST) or managing complex schemas (GraphQL). Server essentially exposes functions or methods which can be called by client with standard JSON payload along with passing any parameters to it. 
 
 ## Comparisons
 - Uses JSON unlike string based GQL in GraphQL or URL in REST
@@ -222,7 +222,14 @@ Result
   - Run API `cd api` and `npm start`, API running at http://localhost:8000/
   - Run Web `cd web` and `npm start`, browse web app at http://localhost:3000/
   
-  
+
+## Todo
+- [x] Execute operations
+- [x] Accept params and fields selection
+- [x] Inject authentication info to operations via middleware
+- [ ] Option to expose operations as REST endpoints
+
+
 ## Authors
 - Atul Yadav - [GitHub](https://github.com/atulmy) · [Twitter](https://twitter.com/atulmy)
 
