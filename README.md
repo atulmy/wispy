@@ -116,6 +116,32 @@ Result
 }
 ```
 
+#### Read with fields selection
+cURL
+```
+curl http://localhost:8000 \
+  -H 'Content-type: application/json' \
+  -d '{"operation": "productList", "fields": ["_id", "name"]}'
+```
+
+Result
+```
+{
+  "success": true,
+  "message": "",
+  "data": [
+    {
+      "_id": "5b91146bcc58ba33ee349e28",
+      "name": "Hercle, habena dexter!, clabulare!"
+    },
+    {
+      "_id": "5b9113b3cc58ba33ee349e26",
+      "name": "Passion is a small captain."
+    }
+  ]
+}
+```
+
 #### Update
 
 cURL
