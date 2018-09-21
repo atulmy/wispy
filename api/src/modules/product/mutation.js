@@ -2,7 +2,7 @@
 import Product from './model'
 
 // Create
-export async function productCreate({ name, description = '' }) {
+export async function productCreate({ params: { name, description = '' } }) {
   if(name) {
     try {
       const data = await Product.create({ name, description })
@@ -20,7 +20,7 @@ export async function productCreate({ name, description = '' }) {
 }
 
 // Update
-export async function productUpdate({ _id, name, description = '' }) {
+export async function productUpdate({ params: { _id, name, description = '' } }) {
   if(_id && name) {
     try {
       const data = await Product.updateOne({ _id }, { name, description })
@@ -38,7 +38,7 @@ export async function productUpdate({ _id, name, description = '' }) {
 }
 
 // Remove
-export async function productRemove({ productId }) {
+export async function productRemove({ params: { productId } }) {
   if(productId) {
     try {
       const data = await Product.deleteOne({ _id: productId })
