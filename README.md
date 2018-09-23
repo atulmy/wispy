@@ -253,7 +253,7 @@ Result
 - [x] Execute operations
 - [x] Accept params and fields selection
 - [x] Inject authentication info to operations via middleware
-- [ ] Option to expose operations as REST endpoints
+- [x] Option to expose operations as REST endpoints
 - [ ] Auto generate documentations
 
 

@@ -9,19 +9,40 @@ export default function (server) {
   console.info('SETUP - Endpoint..')
 
   // API endpoint
-  server.all(params.endpoint.url, authentication, async (request, response) => {
+  server.all(params.endpoint.mode === 'rpc' ? '/' : '/:operation?', authentication, async (request, response) => {
     let result = {
       success: false,
       message: 'Please try again.',
       data: null
     }
 
-    if(request.body.operation) {
+    console.log(request.body)
+    console.log(request.params)
+    console.log(request.query)
+
+    let operation
+
+    switch (params.endpoint.mode) {
+      case 'composite':
+        operation = modules[request.body.operation] || modules[request.params.operation]
+        break
+
+      case 'rest':
+        operation = modules[request.params.operation]
+        break
+
+      case 'rpc':
+      default:
+        operation = modules[request.body.operation]
+        break
+    }
+
+    if(operation) {
       try {
         // Execute operation
         // operationName({ params, fields, auth })
-        const { data, message = '' } = await modules[request.body.operation]({
-          params: request.body.params || {},
+        const { data, message = '' } = await operation({
+          params: request.body.params || request.query || {},
           fields: request.body.fields || {},
           auth: request.auth,
         })
@@ -32,10 +53,10 @@ export default function (server) {
         result.message = message
       } catch (error) {
         // Operation executed failed
-        result.message = modules[request.body.operation] === undefined
-          ? `${ request.body.operation } operation is not available.`
-          : error.message
+        result.message = error.message
       }
+    } else {
+      result.message = `${ request.body.operation } operation is not available.`
     }
 
     if(NODE_ENV === 'development') {

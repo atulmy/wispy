@@ -1,7 +1,13 @@
 {
   "endpoint": {
-    "url": "/"
+    "modes": [
+      "rpc",
+      "rest",
+      "composite"
+    ],
+    "mode": "composite"
   },
+
   "site": {
     "version": 0.1,
     "name": "QnM API"
