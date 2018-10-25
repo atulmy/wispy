@@ -246,7 +246,10 @@ Result
 - Running
   - Run API `cd api` and `npm start`, API running at http://localhost:8000/
   - Run Web `cd web` and `npm start`, browse web app at http://localhost:3000/
-  
+
+- Expose Operations as REST endpoints
+  - Set `endpoint.mode` in `api/src/setup/config/params.json` to any one of following modes: `{ "rpc", "rest", "composite" }`
+
 
 ## Todo
 - [x] Execute operations
