@@ -16,10 +16,6 @@ export default function (server) {
       data: null
     }
 
-    console.log(request.body)
-    console.log(request.params)
-    console.log(request.query)
-
     let operation
 
     switch (params.endpoint.mode) {
