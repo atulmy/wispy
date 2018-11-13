@@ -1,5 +1,5 @@
 # WISPY 🌱
-An experimental lightweight (remote procedure call) API pattern [work in progress]
+An experimental lightweight (remote procedure call) API pattern.
 
 ## Idea
 Execute functions or piece of code living in your API end without any hassles of creating multiple endpoints (REST) or managing complex schemas (GraphQL). Server essentially exposes functions or methods which can be called by client with standard JSON payload along with passing any parameters to it. 
