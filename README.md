@@ -84,7 +84,7 @@ async function productList() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"operation": "productList"})
+      body: JSON.stringify({ "operation": "productList" })
     }
     const response = await fetch('http://localhost:8000', config)
     const data = await response.json()
@@ -127,6 +127,30 @@ cURL
 curl http://localhost:8000 \
   -H 'Content-type: application/json' \
   -d '{"operation": "productList", "fields": ["_id", "name"]}'
+```
+
+fetch
+```
+async function productList() {
+  try {
+    const config = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        "operation": "productList", 
+        "fields": ["_id", "name"]
+      })
+    }
+    const response = await fetch('http://localhost:8000', config)
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.error(error)
+  }
+}
 ```
 
 Result
@@ -216,7 +240,10 @@ async function productRemove() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"operation": "productRemove", "params": {"productId": "5b914211aaabdc51bf1839a9"}})
+      body: JSON.stringify({
+        "operation": "productRemove", 
+        "params": { "productId": "5b914211aaabdc51bf1839a9" }
+      })
     }
     const response = await fetch('http://localhost:8000', config)
     const data = await response.json()
