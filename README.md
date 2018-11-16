@@ -33,7 +33,13 @@ async function productCreate() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"operation": "productCreate", "params": {"name": "Product 1", "description": "Good product."}})
+      body: JSON.stringify({
+        "operation": "productCreate", 
+        "params": {
+          "name": "Product 1", 
+          "description": "Good product."
+        }
+      })
     }
     const response = await fetch('http://localhost:8000', config)
     const data = await response.json()
@@ -160,7 +166,14 @@ async function productUpdate() {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({"operation": "productUpdate", "params": {"_id": "5b914211aaabdc51bf1839a9", "name": "Product 1", "description": "Good product it is."}})
+      body: JSON.stringify({
+        "operation": "productUpdate", 
+        "params": {
+          "_id": "5b914211aaabdc51bf1839a9", 
+          "name": "Product 1", 
+          "description": "Good product it is."
+        }
+      })
     }
     const response = await fetch('http://localhost:8000', config)
     const data = await response.json()
