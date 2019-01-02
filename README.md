@@ -17,14 +17,14 @@ Execute functions or piece of code living in your API end without any hassles of
 #### 1. Create
 
 cURL
-```
+```bash
 curl http://localhost:8000 \
   -H 'Content-type: application/json' \
   -d '{"operation": "productCreate", "params": {"name": "Product 1", "description": "Good product."}}'
 ```
 
 fetch
-```
+```javascript
 async function productCreate() {
   try {
     const config = {
@@ -51,7 +51,7 @@ async function productCreate() {
 ```
 
 Result
-```
+```json
 {
   "success": true,
   "message": "Product created successfully.",
@@ -68,14 +68,14 @@ Result
 
 #### 2.1 Read
 cURL
-```
+```bash
 curl http://localhost:8000 \
   -H 'Content-type: application/json' \
   -d '{"operation": "productList"}'
 ```
 
 fetch
-```
+```javascript
 async function productList() {
   try {
     const config = {
@@ -96,7 +96,7 @@ async function productList() {
 ```
 
 Result
-```
+```json
 {
   "success": true,
   "message": "",
@@ -123,14 +123,14 @@ Result
 
 #### 2.2 Read with fields selection
 cURL
-```
+```bash
 curl http://localhost:8000 \
   -H 'Content-type: application/json' \
   -d '{"operation": "productList", "fields": ["_id", "name"]}'
 ```
 
 fetch
-```
+```javascript
 async function productList() {
   try {
     const config = {
@@ -154,7 +154,7 @@ async function productList() {
 ```
 
 Result
-```
+```json
 {
   "success": true,
   "message": "",
@@ -174,14 +174,14 @@ Result
 #### 3. Update
 
 cURL
-```
+```bash
 curl http://localhost:8000 \
   -H 'Content-type: application/json' \
   -d '{"operation": "productUpdate", "params": {"_id": "5b914211aaabdc51bf1839a9", "name": "Product 1", "description": "Good product it is."}}'
 ```
 
 fetch
-```
+```javascript
 async function productUpdate() {
   try {
     const config = {
@@ -209,7 +209,7 @@ async function productUpdate() {
 ```
 
 Result
-```
+```json
 {
   "success": true,
   "message": "Product updated successfully.",
@@ -224,14 +224,14 @@ Result
 #### 4. Delete
 
 cURL
-```
+```bash
 curl http://localhost:8000 \
   -H 'Content-type: application/json' \
   -d '{"operation": "productRemove", "params": {"productId": "5b914211aaabdc51bf1839a9"}}'
 ```
 
 fetch
-```
+```javascript
 async function productRemove() {
   try {
     const config = {
@@ -255,7 +255,7 @@ async function productRemove() {
 ```
 
 Result
-```
+```json
 {
   "success": true,
   "message": "Product removed successfully.",
