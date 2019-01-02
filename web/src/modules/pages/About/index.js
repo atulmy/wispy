@@ -11,7 +11,7 @@ const About = () => (
 
     <Divider />
 
-    <p>Lightweight API pattern inspired by GraphQL/SOAP</p>
+    <p><span role="img" aria-label="wispy">🌱</span>An experimental lightweight RPC (remote procedure call) API pattern inspired by GraphQL/SOAP.</p>
   </div>
 )
 
