@@ -5,7 +5,7 @@
   "dependencies": {
     "axios": "0.18.0",
     "lodash": "4.17.11",
-    "prop-types": "15.6.2",
+    "prop-types": "15.7.2",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "react-redux": "6.0.0",
@@ -13,10 +13,10 @@
     "redux": "4.0.1",
     "redux-thunk": "2.3.0",
     "semantic-ui-css": "2.4.1",
-    "semantic-ui-react": "0.84.0"
+    "semantic-ui-react": "0.85.0"
   },
   "devDependencies": {
-    "react-scripts": "2.1.2"
+    "react-scripts": "2.1.5"
   },
   "scripts": {
     "start": "react-scripts start",
