@@ -72,13 +72,15 @@ class CreateOrUpdate extends Component {
 
       if(data.success) {
         history.push(routes.productList.path)
+      } else {
+        this.isLoadingSubmitToggle(false)
       }
 
       messageShow({ success: data.success, message: data.message })
     } catch(error) {
-      messageShow({ success: false, message: 'There was some error. Please try again.' })
-    } finally {
       this.isLoadingSubmitToggle(false)
+
+      messageShow({ success: false, message: 'There was some error. Please try again.' })
     }
   }
 
@@ -126,6 +128,7 @@ class CreateOrUpdate extends Component {
                     onChange={this.onChange}
                     placeholder={'Enter product name'}
                     autoComplete={'off'}
+                    required
                     autoFocus
                   />
                 </Form.Field>
