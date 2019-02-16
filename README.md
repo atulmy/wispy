@@ -10,7 +10,7 @@ Execute functions or piece of code living in your API end without any hassles of
 - No strict schema unlike GraphQL
 - Simple customizable payload in JSON format unlike in SOAP which uses XML and strict structure
 - Option to select the fields you want the API to return (similar to GraphQL)
-- Does not provide auto documentation (available in GraphQL)
+- No auto documentation generation yet (available in GraphQL)
 
 ## Examples
 
