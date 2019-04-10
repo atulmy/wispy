@@ -17,10 +17,10 @@
   "dependencies": {
     "body-parser": "1.18.3",
     "cors": "2.8.5",
-    "dotenv": "6.2.0",
+    "dotenv": "7.0.0",
     "express": "4.16.4",
     "ip": "1.1.5",
-    "mongoose": "5.4.17",
+    "mongoose": "5.5.0",
     "morgan": "1.9.1",
     "multer": "1.4.1"
   },
@@ -29,6 +29,6 @@
     "babel-plugin-transform-runtime": "6.23.0",
     "babel-preset-env": "1.7.0",
     "babel-preset-stage-2": "6.24.1",
-    "nodemon": "1.18.10"
+    "nodemon": "1.18.11"
   }
 }
