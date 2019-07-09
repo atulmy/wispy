@@ -1,5 +1,5 @@
 // Configurations
 
 // URL
-export const WEB_URL = process.env.REACT_APP_WEB_URL
-export const API_URL = process.env.REACT_APP_API_URL
+export const URL_API = process.env.REACT_APP_URL_API
+export const URL_WEB = process.env.REACT_APP_URL_WEB

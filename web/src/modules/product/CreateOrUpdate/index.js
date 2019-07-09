@@ -80,6 +80,8 @@ class CreateOrUpdate extends Component {
     } catch(error) {
       this.isLoadingSubmitToggle(false)
 
+      console.log(error)
+
       messageShow({ success: false, message: 'There was some error. Please try again.' })
     }
   }

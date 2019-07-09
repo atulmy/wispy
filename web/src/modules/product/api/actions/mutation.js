@@ -2,7 +2,7 @@
 import axios from 'axios'
 
 // App Imports
-import { API_URL } from '../../../../setup/config/env'
+import { URL_API } from '../../../../setup/config/env'
 
 // Create or update
 export function createOrUpdate(product) {
@@ -16,7 +16,7 @@ export function createOrUpdate(product) {
 // Create
 export function create(product) {
   return dispatch => {
-    return axios.post(API_URL, {
+    return axios.post(URL_API, {
       operation: 'productCreate',
       params: product
     })
@@ -26,7 +26,7 @@ export function create(product) {
 // Update
 export function update(product) {
   return dispatch => {
-    return axios.post(API_URL, {
+    return axios.post(URL_API, {
       operation: 'productUpdate',
       params: product
     })
@@ -36,7 +36,7 @@ export function update(product) {
 // Remove
 export function remove(productId) {
   return dispatch => {
-    return axios.post(API_URL, {
+    return axios.post(URL_API, {
       operation: 'productRemove',
       params: {
         productId
