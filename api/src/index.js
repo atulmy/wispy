@@ -1,4 +1,5 @@
 // Imports
+import http from 'http'
 import express from 'express'
 
 // App Imports
@@ -8,16 +9,17 @@ import endpoint from './setup/server/endpoint'
 import start from './setup/server/start'
 
 // Create express server
-const server = express()
+const app = express()
+const server = http.createServer(app)
 
 // Connect database
 database()
 
-// Setup middlewares
-middlewares(server)
+// Setup middleware
+middlewares(app)
 
 // Setup endpoint
-endpoint(server)
+endpoint(app, server)
 
 // Start server
 start(server)

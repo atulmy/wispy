@@ -7,20 +7,20 @@ import morgan from 'morgan'
 import { NODE_ENV, WEB_URL } from '../config/env'
 
 // Setup middlewares
-export default function (server) {
+export default function (app) {
   console.info('SETUP - Middlewares..')
 
   // Enable CORS
-  server.use(cors({
+  app.use(cors({
     origin: WEB_URL
   }))
 
   // Request body parser
-  server.use(bodyParser.json())
-  server.use(bodyParser.urlencoded({ extended: false }))
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: false }))
 
   // HTTP logger
   if(NODE_ENV === 'development') {
-    server.use(morgan('tiny'))
+    app.use(morgan('tiny'))
   }
 }

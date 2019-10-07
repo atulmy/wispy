@@ -5,6 +5,7 @@ import mongoose from 'mongoose'
 import { NODE_ENV } from '../config/env'
 import database from '../server/database'
 import product from '../../modules/product/seed'
+import wall from '../../modules/wall/seed'
 
 // Seeder
 async function seeder() {
@@ -21,6 +22,7 @@ async function seeder() {
 
   // Seeds
   await product()
+  await wall()
 
   // Close connection
   mongoose.connection.close()

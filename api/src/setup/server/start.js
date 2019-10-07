@@ -13,8 +13,10 @@ export default function (server) {
       console.error('ERROR - Unable to start server.')
     } else {
       console.info(`INFO - Server started on`)
-      console.info(`  Local   http://localhost:${ PORT } [${ NODE_ENV }]`)
-      console.info(`  Network http://${ ip.address() }:${ PORT } [${ NODE_ENV }]`)
+      console.info(`  Local     http://localhost:${ PORT } [${ NODE_ENV }]`)
+      console.info(`  Network   http://${ ip.address() }:${ PORT } [${ NODE_ENV }]`)
+      console.info(`  Local     ws://localhost:${ PORT } [${ NODE_ENV }]`)
+      console.info(`  Network   ws://${ ip.address() }:${ PORT } [${ NODE_ENV }]`)
     }
   })
 

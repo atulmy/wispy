@@ -10,7 +10,54 @@ Execute functions or piece of code living in your API end without any hassles of
 - No strict schema unlike GraphQL
 - Simple customizable payload in JSON format unlike in SOAP which uses XML and strict structure
 - Option to select the fields you want the API to return (similar to GraphQL)
-- No auto documentation generation yet (available in GraphQL)
+- Option to subscribe to live updates (Subscriptions via websockets) like in GraphQL
+
+<table>
+    <thead>
+        <tr>
+            <th>Technology</th>
+            <th>Message format</th>
+            <th>Endpoints</th>
+            <th>Field selection</th>
+            <th>Strict Schema</th>
+            <th>Subscriptions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Wispy</td>
+            <td>JSON</td>
+            <td>One</td>
+            <td>Yes</td>
+            <td>No</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>GraphQL</td>
+            <td>GQL</td>
+            <td>One</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>Yes</td>
+        </tr>
+        <tr>
+            <td>REST</td>
+            <td>JSON</td>
+            <td>Multiple</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+        </tr>
+        <tr>
+            <td>SOAP</td>
+            <td>XML</td>
+            <td>One</td>
+            <td>Yes</td>
+            <td>Yes</td>
+            <td>No</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Examples
 
@@ -297,6 +344,9 @@ Result
 - [x] Accept params and fields selection
 - [x] Inject authentication info to operations via middleware
 - [x] Option to expose operations as REST endpoints
+- [x] Query (read)
+- [x] Mutations (create/update/delete)
+- [x] Subscriptions (websocket)
 - [ ] Auto generate documentations
 
 

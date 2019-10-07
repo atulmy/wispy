@@ -27,7 +27,7 @@ class CreateOrUpdate extends Component {
       isLoading: false,
       isLoadingSubmit: false,
 
-      product: this.product
+      product: { ...this.product }
     }
   }
 

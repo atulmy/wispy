@@ -17,6 +17,6 @@ export default async function() {
   ]
 
   for (const product of products) {
-    await productCreate(product)
+    await productCreate({ params: product })
   }
 }

@@ -23,6 +23,12 @@ export const Header = () => (
       </Menu.Item>
     </Link>
 
+    <Link to={routes.wallList.path}>
+      <Menu.Item>
+        Wall
+      </Menu.Item>
+    </Link>
+
     <Menu.Menu position={'right'}>
       <Link to={routes.about.path}>
         <Menu.Item>

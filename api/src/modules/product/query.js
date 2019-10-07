@@ -4,7 +4,10 @@ import Product from './model'
 // Get all
 export async function productList({ fields }) {
   try {
-    const data = await Product.find().sort({ createdAt: -1 }).select(fields)
+    const data = await Product
+      .find()
+      .sort({ createdAt: -1 })
+      .select(fields)
 
     return {
       data

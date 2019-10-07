@@ -1,3 +1,6 @@
+// Imports
+import socket from 'socket.io'
+
 // App Imports
 import { NODE_ENV } from '../config/env'
 import params from '../config/params'
@@ -5,11 +8,15 @@ import authentication from './authentication'
 import modules from './modules'
 
 // Setup endpoint
-export default function (server) {
+export default function (app, server) {
   console.info('SETUP - Endpoint..')
 
+  // Websocket
+  const io = socket.listen(server)
+  const subscription = io.of('subscription')
+
   // API endpoint
-  server.all(params.endpoint.mode === 'rpc' ? '/' : '/:operation?', authentication, async (request, response) => {
+  app.all(params.endpoint.mode === 'rpc' ? '/' : '/:operation?', authentication, async (request, response) => {
     let result = {
       success: false,
       message: 'Please try again.',
@@ -41,6 +48,7 @@ export default function (server) {
           params: request.body.params || request.query || {},
           fields: request.body.fields || {},
           auth: request.auth,
+          subscription
         })
 
         // Operation executed successfully
