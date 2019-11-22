@@ -1,6 +1,6 @@
 // Imports
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 
 // UI Imports
 import { Button, Form } from 'semantic-ui-react'
@@ -10,32 +10,20 @@ import { messageShow } from '../../common/api/actions'
 import { create } from '../api/actions/mutation'
 
 // Component
-class Create extends Component {
+const Create = () => {
+  // state
+  const [isSubmitting, isSubmittingToggle] = useState(false)
+  const [message, setMessage] = useState('')
+  const dispatch = useDispatch()
 
-  constructor (props) {
-    super(props)
-
-    this.wall = {
-      message: ''
-    }
-
-    this.state = {
-      isLoadingSubmit: false,
-
-      wall: { ...this.wall }
-    }
-  }
-
-  onSubmit = async (event) => {
+  // on submit
+  const onSubmit = async (event) => {
     event.preventDefault()
 
-    const { dispatch } = this.props
-    const { wall } = this.state
-
-    this.isLoadingSubmitToggle(true)
+    isSubmittingToggle(true)
 
     try {
-      const { data } = await dispatch(create(wall))
+      const { data } = await dispatch(create({ message }))
 
       dispatch(messageShow({
         success: data.success,
@@ -43,9 +31,7 @@ class Create extends Component {
       }))
 
       if(data.success) {
-        this.setState({
-          wall: { ...this.wall }
-        })
+        setMessage('')
       }
     } catch(error) {
       dispatch(messageShow({
@@ -53,46 +39,40 @@ class Create extends Component {
         message: 'There was some error. Please try again.'
       }))
     } finally {
-      this.isLoadingSubmitToggle(false)
+      isSubmittingToggle(false)
     }
   }
 
-  isLoadingSubmitToggle = isLoadingSubmit => {
-    this.setState({
-      isLoadingSubmit
-    })
+  // on change
+  const onChange = event => {
+    setMessage(event.target.value)
   }
 
-  onChange = (event, { name, value }) => {
-    let { wall } = this.state
-    wall[name] = value
+  // render
+  return (
+    <Form onSubmit={onSubmit}>
+      <Form.Field>
+        <Form.Input
+          name='message'
+          value={message}
+          onChange={onChange}
+          placeholder='Post something on the wall'
+          autoComplete='off'
+          required
+          autoFocus
+        />
+      </Form.Field>
 
-    this.setState({
-      wall
-    })
-  }
-
-  render() {
-    const { isLoadingSubmit, wall: { message } } = this.state
-
-    return (
-      <Form onSubmit={this.onSubmit}>
-        <Form.Field>
-          <Form.Input
-            name={'message'}
-            value={message}
-            onChange={this.onChange}
-            placeholder={'Post something on the wall'}
-            autoComplete={'off'}
-            required
-            autoFocus
-          />
-        </Form.Field>
-
-        <Button primary type={'submit'} loading={isLoadingSubmit}>Post</Button>
-      </Form>
-    )
-  }
+      <Button
+        type='submit'
+        loading={isSubmitting}
+        disabled={isSubmitting}
+        primary
+      >
+        Post
+      </Button>
+    </Form>
+  )
 }
 
-export default connect()(Create)
+export default Create

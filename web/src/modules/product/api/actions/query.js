@@ -44,12 +44,10 @@ export function getList(isLoading = true) {
 
 // Get by id
 export function get(productId) {
-  return dispatch => {
-    return axios.post(URL_API, {
-      operation: 'productById',
-      params: {
-        productId
-      }
-    })
-  }
+  return axios.post(URL_API, {
+    operation: 'productById',
+    params: {
+      productId
+    }
+  })
 }

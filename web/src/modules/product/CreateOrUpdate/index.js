@@ -1,10 +1,9 @@
 // Imports
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
+import React, { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 
 // UI Imports
-import { Header, Grid, Divider, Button, Form } from 'semantic-ui-react'
+import { Header, Grid, Divider, Button, Form, Loader } from 'semantic-ui-react'
 
 // App Imports
 import { messageShow } from '../../common/api/actions'
@@ -13,155 +12,126 @@ import { get } from '../api/actions/query'
 import { createOrUpdate } from '../api/actions/mutation'
 
 // Component
-class CreateOrUpdate extends Component {
-  constructor (props) {
-    super(props)
+const CreateOrUpdate = ({ match: { params: { productId } }, history }) => {
+  // state
+  const [isRefreshing, isRefreshingToggle] = useState(false)
+  const [isSubmitting, isSubmittingToggle] = useState(false)
+  const [product, setProduct] = useState({
+    _id: '',
+    name: '',
+    description: ''
+  })
+  const dispatch = useDispatch()
 
-    this.product = {
-      _id: '',
-      name: '',
-      description: ''
-    }
-
-    this.state = {
-      isLoading: false,
-      isLoadingSubmit: false,
-
-      product: { ...this.product }
-    }
-  }
-
-  componentDidMount() {
-    const { match: { params: { productId } } } = this.props
-
+  // on component load
+  useEffect(() => {
     if(productId) {
-      this.refresh(productId)
+      refresh(productId)
     }
-  }
+  }, [productId])
 
-  refresh = async (productId) => {
-    const { get } = this.props
-
-    this.isLoadingToggle(true)
+  // refresh
+  const refresh = async productId => {
+    isRefreshingToggle(true)
 
     try {
       const { data } = await get(productId)
 
       if(data.success) {
-        this.setState({
-          product: data.data
-        })
+        setProduct(data.data)
       }
     } catch(error) {
-      messageShow({ title: 'Error!', description: 'There was some error. Please try again.' })
+      dispatch(messageShow({ title: 'Error!', description: 'There was some error. Please try again.' }))
     } finally {
-      this.isLoadingToggle(false)
+      isRefreshingToggle(false)
     }
   }
 
-  onSubmit = async (event) => {
+  // on submit
+  const onSubmit = async event => {
     event.preventDefault()
 
-    const { createOrUpdate, messageShow, history } = this.props
-    const { product } = this.state
-
-    this.isLoadingSubmitToggle(true)
+    isSubmittingToggle(true)
 
     try {
       const { data } = await createOrUpdate(product)
 
+      dispatch(messageShow({ success: data.success, message: data.message }))
+
       if(data.success) {
         history.push(routes.productList.path)
       } else {
-        this.isLoadingSubmitToggle(false)
+        isSubmittingToggle(false)
       }
-
-      messageShow({ success: data.success, message: data.message })
     } catch(error) {
-      this.isLoadingSubmitToggle(false)
+      isSubmittingToggle(false)
 
-      console.log(error)
-
-      messageShow({ success: false, message: 'There was some error. Please try again.' })
+      dispatch(messageShow({ success: false, message: 'There was some error. Please try again.' }))
     }
   }
 
-  isLoadingToggle = isLoading => {
-    this.setState({
-      isLoading
+  // on change
+  const onChange = event => {
+    setProduct({
+      ...product,
+      [event.target.name]: event.target.value
     })
   }
 
-  isLoadingSubmitToggle = isLoadingSubmit => {
-    this.setState({
-      isLoadingSubmit
-    })
-  }
+  // render
+  return (
+    <div>
+      <Header as='h3'>{ productId ? 'Edit' : 'Create' } Product</Header>
 
-  onChange = (event, { name, value }) => {
-    let { product } = this.state
-    product[name] = value
+      <Divider />
 
-    this.setState({
-      product
-    })
-  }
+      <Grid>
+        <Grid.Row>
+          <Grid.Column width={8}>
+            {
+              isRefreshing
+                ? <Loader active inline />
+                : <Form onSubmit={onSubmit}>
+                    <Form.Field>
+                      <label>Name</label>
 
-  render() {
-    const { match: { params: { productId } } } = this.props
-    const { product: { name, description }, isLoading, isLoadingSubmit } = this.state
+                      <Form.Input
+                        name='name'
+                        value={product.name}
+                        onChange={onChange}
+                        placeholder='Enter product name'
+                        required
+                        autoFocus
+                      />
+                    </Form.Field>
 
-    return (
-      <div>
-        <Header as={'h3'}>{ productId ? 'Edit' : 'Create' } Product</Header>
+                    <Form.Field>
+                      <label>Description</label>
 
-        <Divider />
+                      <Form.Input
+                        name='description'
+                        value={product.description}
+                        onChange={onChange}
+                        placeholder='Enter product description'
+                      />
+                    </Form.Field>
 
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={8}>
-              <Form onSubmit={this.onSubmit}>
-                <Form.Field>
-                  <label>Name</label>
-
-                  <Form.Input
-                    name={'name'}
-                    value={name}
-                    onChange={this.onChange}
-                    placeholder={'Enter product name'}
-                    autoComplete={'off'}
-                    required
-                    autoFocus
-                  />
-                </Form.Field>
-
-                <Form.Field>
-                  <label>Description</label>
-
-                  <Form.Input
-                    name={'description'}
-                    value={description}
-                    onChange={this.onChange}
-                    placeholder={'Enter product description'}
-                    autoComplete={'off'}
-                  />
-                </Form.Field>
-
-                <Button primary type={'submit'} loading={isLoadingSubmit || (productId && isLoading)} disabled={isLoadingSubmit || (productId && isLoading)}>Submit</Button>
-              </Form>
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </div>
-    )
-  }
+                    <Button
+                      primary
+                      type='submit'
+                      loading={isSubmitting}
+                      disabled={isSubmitting}
+                    >
+                      Submit
+                    </Button>
+                  </Form>
+            }
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
+    </div>
+  )
 }
 
-// Component Properties
-CreateOrUpdate.propTypes = {
-  get: PropTypes.func.isRequired,
-  createOrUpdate: PropTypes.func.isRequired,
-  messageShow: PropTypes.func.isRequired,
-}
 
-export default connect(null, { get, createOrUpdate, messageShow })(CreateOrUpdate)
+export default CreateOrUpdate

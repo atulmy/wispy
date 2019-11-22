@@ -29,14 +29,14 @@ export const Header = () => (
       </Menu.Item>
     </Link>
 
-    <Menu.Menu position={'right'}>
+    <Menu.Menu position='right'>
       <Link to={routes.about.path}>
         <Menu.Item>
           About
         </Menu.Item>
       </Link>
 
-      <a href={'https://github.com/atulmy/wispy'} target={'_blank'}>
+      <a href='https://github.com/atulmy/wispy' target='_blank'>
         <Menu.Item>
           GitHub
         </Menu.Item>

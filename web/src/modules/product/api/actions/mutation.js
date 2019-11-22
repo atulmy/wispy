@@ -15,32 +15,26 @@ export function createOrUpdate(product) {
 
 // Create
 export function create(product) {
-  return dispatch => {
-    return axios.post(URL_API, {
-      operation: 'productCreate',
-      params: product
-    })
-  }
+  return axios.post(URL_API, {
+    operation: 'productCreate',
+    params: product
+  })
 }
 
 // Update
 export function update(product) {
-  return dispatch => {
-    return axios.post(URL_API, {
-      operation: 'productUpdate',
-      params: product
-    })
-  }
+  return axios.post(URL_API, {
+    operation: 'productUpdate',
+    params: product
+  })
 }
 
 // Remove
 export function remove(productId) {
-  return dispatch => {
-    return axios.post(URL_API, {
-      operation: 'productRemove',
-      params: {
-        productId
-      }
-    })
-  }
+  return axios.post(URL_API, {
+    operation: 'productRemove',
+    params: {
+      productId
+    }
+  })
 }

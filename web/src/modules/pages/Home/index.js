@@ -7,7 +7,7 @@ import { Divider, Header } from 'semantic-ui-react'
 // Component
 const Home = () => (
   <div>
-    <Header as={'h3'}>Welcome!</Header>
+    <Header as='h3'>Welcome!</Header>
 
     <Divider />
 
