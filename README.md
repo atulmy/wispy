@@ -358,7 +358,6 @@ Result
 If you found this project useful, kindly donate to support it ❤️
 
 [![Donate via PayPal](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/paypal-me-smaller.png)](http://paypal.me/atulmy)
-[![Become a Patreon](https://raw.githubusercontent.com/atulmy/atulmy.github.io/master/images/mix/patreon.png?v=1)](https://www.patreon.com/atulmy)
 
 
 ## Hire me
