@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 
 // App Imports
 import { NODE_ENV } from '../config/env'
-import database from '../server/database'
+import { connect } from '../server/database'
 import product from '../../modules/product/seed'
 import wall from '../../modules/wall/seed'
 
@@ -11,7 +11,7 @@ import wall from '../../modules/wall/seed'
 async function seeder() {
   console.log('SEED - Started')
 
-  await database()
+  await connect()
 
   // Clear database, only in development, do not do in production. I repeat, do not do it in production or you will be featured on www.commitstrip.com!
   if(NODE_ENV === 'development') {

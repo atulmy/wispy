@@ -3,7 +3,7 @@ import http from 'http'
 import express from 'express'
 
 // App Imports
-import database from './setup/server/database'
+import { connect } from './setup/server/database'
 import middlewares from './setup/server/middlewares'
 import endpoint from './setup/server/endpoint'
 import start from './setup/server/start'
@@ -13,7 +13,7 @@ const app = express()
 const server = http.createServer(app)
 
 // Connect database
-database()
+connect()
 
 // Setup middleware
 middlewares(app)
