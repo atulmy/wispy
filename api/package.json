@@ -20,18 +20,18 @@
     "dotenv": "8.2.0",
     "express": "4.17.1",
     "ip": "1.1.5",
-    "mongoose": "5.7.12",
+    "mongoose": "5.8.7",
     "morgan": "1.9.1",
     "multer": "1.4.2",
     "socket.io": "^2.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.7.0",
-    "@babel/core": "7.7.2",
-    "@babel/node": "7.7.0",
-    "@babel/plugin-transform-runtime": "7.6.2",
-    "@babel/preset-env": "7.7.1",
-    "@babel/runtime": "7.7.2",
-    "nodemon": "2.0.0"
+    "@babel/cli": "7.8.3",
+    "@babel/core": "7.8.3",
+    "@babel/node": "7.8.3",
+    "@babel/plugin-transform-runtime": "7.8.3",
+    "@babel/preset-env": "7.8.3",
+    "@babel/runtime": "7.8.3",
+    "nodemon": "2.0.2"
   }
 }
