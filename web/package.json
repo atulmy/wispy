@@ -7,8 +7,8 @@
     "lodash": "4.17.15",
     "moment": "^2.24.0",
     "prop-types": "15.7.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "react-redux": "7.2.0",
     "react-router-dom": "5.1.2",
     "redux": "4.0.5",
@@ -16,10 +16,10 @@
     "semantic-ui-css": "2.4.1",
     "semantic-ui-react": "0.88.2",
     "socket.io-client": "^2.3.0",
-    "use-immer": "^0.3.5"
+    "use-immer": "^0.4.0"
   },
   "devDependencies": {
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.1"
   },
   "scripts": {
     "start": "react-scripts start",
