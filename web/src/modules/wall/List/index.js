@@ -25,6 +25,11 @@ const List = () => {
     refresh()
 
     subscribe()
+
+    // on component unmount
+    return () => {
+      unsubscribe()
+    }
   }, [])
 
   // refresh
@@ -47,10 +52,16 @@ const List = () => {
     }
   }
 
+  // subscribe
   const subscribe = () => {
     subscription.on('wallSubscribeList', message => {
       setList(list => (list = [message, ...list]))
     })
+  }
+
+  // un subscribe
+  const unsubscribe = () => {
+    subscription.disconnect()
   }
 
   // render
