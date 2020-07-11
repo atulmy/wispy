@@ -54,7 +54,10 @@ const List = () => {
 
   // subscribe
   const subscribe = () => {
+    subscription.connect()
+
     subscription.on('wallSubscribeList', message => {
+      console.log('message', message)
       setList(list => (list = [message, ...list]))
     })
   }
